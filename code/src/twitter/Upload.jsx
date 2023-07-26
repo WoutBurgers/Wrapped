@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from '@mui/material'
-import './../Main.css'
 import HomeButton from '../components/HomeButton'
 
 export default function Upload() {

@@ -10,3 +10,45 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+
+.standard-style {
+    text-align: center;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    position: relative; /* Add position relative to the parent container */
+}
+
+.home-button-container {
+    position: absolute;
+    top: 20px; /* Adjust the top value to move the button down from the top */
+}
+
+.menu-buttons {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.home-button {
+    text-decoration: none;
+}
+
+.custom-button {
+    width: 300px; 
+    margin: 5px; 
+  }
+
+  .buttons {
+    padding-top: 20px;
+  }

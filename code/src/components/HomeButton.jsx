@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/ArrowBack'
 import { Button } from '@mui/material'
-import './../Main.css'
 
 export default function HomeButton() {
     return (
