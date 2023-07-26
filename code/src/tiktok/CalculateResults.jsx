@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react'
 import { CircularProgress } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 export default function CalculateResults() {
-    useEffect(() => {
+    const navigate = useNavigate()
 
+    useEffect(() => {
+        setTimeout(() => {
+            navigate('/tiktok/ready/')
+        }, 2000)
     })
 
     return (
