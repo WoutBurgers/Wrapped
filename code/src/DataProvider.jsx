@@ -5,10 +5,12 @@ export const Context = createContext();
 
 export default function DataProvider({ children }) {
   const [tiktokData, setTikTokData] = useState([])
-  const test = 'test'
+  const [tiktokStats, setTikTokStats] = useState({
+    viewedVideos: 0,
+  })
 
   return (
-    <Context.Provider value={{ test, tiktokData, setTikTokData }}>
+    <Context.Provider value={{ tiktokData, setTikTokData, tiktokStats, setTikTokStats}}>
       {children}
     </Context.Provider>
   );

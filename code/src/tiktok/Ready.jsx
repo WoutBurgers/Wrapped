@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Button from '@mui/material/Button'
 import { Link } from 'react-router-dom'
+import { Context } from '../DataProvider'
 
 export default function Ready() {
+    const { tiktokStats } = useContext(Context)
+
+    useEffect(() => {
+        console.log(tiktokStats)
+    }, [])
+
     return (
         <div className="standard-style">
             <h1>Your TikTok Wrapped is ready!</h1>
             <p>
                 We have found some very VERY interesting results...!
                 <br></br>
-                Do not wait any longer. Are you ready to reveal the results??{' '}
+                Are you ready to reveal the results!?{' '}
             </p>
 
             <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
