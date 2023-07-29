@@ -10,13 +10,20 @@ export default function CalculateResults() {
 
     useEffect(() => {
         async function handleCalculations() {
-            await viewedVideos(tiktokData, setTikTokStats)
+            await viewedVideos(tiktokData, update)
         }
 
         handleCalculations()
 
         navigate('/tiktok/ready/')
     }, [])
+
+    const update = async (name, value) => {
+        setTikTokStats((prevStats) => ({
+            ...prevStats,
+            [name]: value,
+        }))
+    }
 
     return (
         <div className="standard-style">

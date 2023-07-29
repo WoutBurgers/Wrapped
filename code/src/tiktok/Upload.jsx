@@ -42,7 +42,8 @@ export default function Upload() {
     }
 
     const handleSuccess = (data) => {
-        setTikTokData(data)
+        const json = JSON.parse(data)
+        setTikTokData(json)
         navigate('/tiktok/calculateResults/')
     }
 
