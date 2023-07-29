@@ -10,7 +10,6 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-
 .standard-style {
     text-align: center;
     background-color: #282c34;
@@ -21,12 +20,12 @@ code {
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-    position: relative; /* Add position relative to the parent container */
+    position: relative;
 }
 
 .home-button-container {
     position: absolute;
-    top: 20px; /* Adjust the top value to move the button down from the top */
+    top: 20px; 
 }
 
 .menu-buttons {

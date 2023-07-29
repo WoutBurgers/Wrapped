@@ -3,6 +3,7 @@ import { CircularProgress } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import viewedVideos from './stats/ViewedVideos'
 import { Context } from '../DataProvider'
+import sessions from './stats/Sessions'
 
 export default function CalculateResults() {
     const navigate = useNavigate()
@@ -11,6 +12,7 @@ export default function CalculateResults() {
     useEffect(() => {
         async function handleCalculations() {
             await viewedVideos(tiktokData, update)
+            await sessions(tiktokData, update)
         }
 
         handleCalculations()

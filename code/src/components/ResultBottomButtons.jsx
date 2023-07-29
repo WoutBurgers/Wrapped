@@ -4,15 +4,19 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import DownloadIcon from '@mui/icons-material/Download'
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
 
-export default function ResultBottomButtons({ handleDownloadClick }) {
+export default function ResultBottomButtons({ handleDownloadClick, showBack, backURL, nextURL }) {
+    const navigate = useNavigate()
+
     return (
         <div style={{ position: 'fixed', bottom: '20px', width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Button
                 variant="outlined"
                 startIcon={<ArrowBackIcon />}
+                disabled={!showBack}
                 onClick={() => {
-                    console.log('Back button clicked')
+                    navigate(backURL)
                 }}
                 style={{ marginRight: '8px' }}
             >
@@ -27,7 +31,7 @@ export default function ResultBottomButtons({ handleDownloadClick }) {
                 variant="outlined"
                 endIcon={<ArrowForwardIcon />}
                 onClick={() => {
-                    console.log('Next button clicked')
+                    navigate(nextURL)
                 }}
                 style={{ marginLeft: '8px' }}
             >
@@ -38,5 +42,14 @@ export default function ResultBottomButtons({ handleDownloadClick }) {
 }
 
 ResultBottomButtons.propTypes = {
-    handleDownloadClick: PropTypes.function.isRequired,
+    handleDownloadClick: PropTypes.func.isRequired,
+    showBack: PropTypes.bool,
+    backURL: PropTypes.string,
+    nextURL: PropTypes.string,
+}
+
+ResultBottomButtons.defaultProps = {
+    showBack: true,
+    backURL: '',
+    nextURL: '',
 }
