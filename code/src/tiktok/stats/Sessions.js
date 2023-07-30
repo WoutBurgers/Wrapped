@@ -17,6 +17,7 @@ const sessions = async (data, update) => {
         startTime: new Date(),
         endTime: new Date(),
         lengthSec: 0,
+        comment: '',
     }
 
     const weekdayUsage = [0, 0, 0, 0, 0, 0, 0]
@@ -76,6 +77,15 @@ const sessions = async (data, update) => {
     const differenceMs = Math.abs(utcDate2 - utcDate1)
 
     const daysDifference = differenceMs / (1000 * 60 * 60 * 24) + 1
+
+    const lls = longestWatchSession.lengthSec
+
+    if (lls <= 29) longestWatchSession.comment = 'No sessions??'
+    else if (lls <= 600) longestWatchSession.comment = 'You must have a busy life!'
+    else if (lls <= 3600) longestWatchSession.comment = "Not even an hour, that's alright!"
+    else if (lls <= 7200) longestWatchSession.comment = 'Wowwww, that must have been a boring day!'
+    else if (lls <= 14400) longestWatchSession.comment = 'This is getting out of hand, are you okay?'
+    else if (lls > 14400) longestWatchSession.comment = "I'm sorry... WHAT?!?!?!"
 
     update('totalWatchTimeSec', totalWatchTimeSec)
     update('totalSessions', totalSessions)

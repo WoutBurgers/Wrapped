@@ -3,7 +3,6 @@ import Button from '@mui/material/Button'
 import { Link } from 'react-router-dom'
 
 export default function Ready() {
-
     return (
         <div className="standard-style">
             <h1>Your TikTok Wrapped is ready!</h1>
@@ -17,7 +16,6 @@ export default function Ready() {
             <Link to="/tiktok/viewedVideos/result" style={{ textDecoration: 'none', color: 'white' }}>
                 <Button variant="contained">Lets see my TikTok Wrapped!</Button>
             </Link>
-
         </div>
     )
 }

@@ -16,6 +16,7 @@ export default function DataProvider({ children }) {
             startTime: new Date(),
             endTime: new Date(),
             lengthSec: 0,
+            comment: '',
         },
         mostActiveWeekday: {
             weekday: '',

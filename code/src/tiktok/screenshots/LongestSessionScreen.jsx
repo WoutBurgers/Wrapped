@@ -10,7 +10,7 @@ export default function ViewedVideosScreen() {
 
     const handleDownloadClick = async () => {
         downloadScreenshot(partToCaptureRef)
-        navigate('/tiktok/viewedVideos/result/')
+        navigate('/tiktok/longestSession/result/')
     }
 
     useEffect(() => {
@@ -21,7 +21,8 @@ export default function ViewedVideosScreen() {
         <>
             <div className="standard-style" ref={partToCaptureRef}>
                 <p>Since {tiktokStats.firstVideo.toLocaleDateString()} you have watched</p>
-                <h1>{tiktokStats.viewedVideos} videos!</h1>
+                <h1>{tiktokStats.viewedVideos}</h1>
+                <p>videos!</p>
             </div>
         </>
     )

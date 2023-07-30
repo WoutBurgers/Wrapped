@@ -25,7 +25,7 @@ code {
 
 .home-button-container {
     position: absolute;
-    top: 20px; 
+    top: 20px;
 }
 
 .menu-buttons {
@@ -44,10 +44,10 @@ code {
 }
 
 .custom-button {
-    width: 300px; 
-    margin: 5px; 
-  }
+    width: 300px;
+    margin: 5px;
+}
 
-  .buttons {
+.buttons {
     padding-top: 20px;
-  }
+}
