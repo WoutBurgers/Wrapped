@@ -2,11 +2,11 @@ import React from 'react'
 import Button from '@mui/material/Button'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import DownloadIcon from '@mui/icons-material/Download'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+import ImageGenerator from '../images/ImageGenerator'
 
-export default function ResultBottomButtons({ handleDownloadClick, showBack, backURL, nextURL }) {
+export default function ResultBottomButtons({ showBack, backURL, nextURL }) {
     const navigate = useNavigate()
 
     return (
@@ -23,9 +23,7 @@ export default function ResultBottomButtons({ handleDownloadClick, showBack, bac
                 Back
             </Button>
 
-            <Button variant="contained" color="primary" onClick={handleDownloadClick} style={{ margin: '0 8px' }}>
-                <DownloadIcon />
-            </Button>
+            <ImageGenerator />
 
             <Button
                 variant="outlined"
@@ -42,7 +40,6 @@ export default function ResultBottomButtons({ handleDownloadClick, showBack, bac
 }
 
 ResultBottomButtons.propTypes = {
-    handleDownloadClick: PropTypes.func.isRequired,
     showBack: PropTypes.bool,
     backURL: PropTypes.string,
     nextURL: PropTypes.string,

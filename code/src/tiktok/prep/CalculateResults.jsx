@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react'
 import { CircularProgress } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import viewedVideos from './stats/ViewedVideos'
-import { Context } from '../DataProvider'
-import sessions from './stats/Sessions'
+import viewedVideos from '../stats/ViewedVideos'
+import { Context } from '../../DataProvider'
+import sessions from '../stats/Sessions'
 
 export default function CalculateResults() {
     const navigate = useNavigate()

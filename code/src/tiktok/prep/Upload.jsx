@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react'
 import { Button } from '@mui/material'
 import ErrorIcon from '@mui/icons-material/Error'
 import { useNavigate } from 'react-router-dom'
-import HomeButton from '../components/HomeButton'
-import { Context } from '../DataProvider'
+import HomeButton from '../../components/HomeButton'
+import { Context } from '../../DataProvider'
 import JSZip from 'jszip'
 
 export default function Upload() {

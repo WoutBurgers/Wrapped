@@ -1,12 +1,11 @@
 import CalculateResults from './CalculateResults'
-import Ready from './Ready'
+import Ready from '../result/Ready'
 import Upload from './Upload'
 import React from 'react'
-import ViewedVideos from './result/ViewedVideos'
-import ViewedVideosScreen from './screenshots/ViewedVideosScreen'
-import LongestSession from './result/LongestSession'
-import LongestSessionScreen from './screenshots/LongestSessionScreen'
-import LastPage from './LastPage'
+import ViewedVideos from '../result/ViewedVideos'
+import LongestSession from '../result/LongestSession'
+import LastPage from '../result/LastPage'
+import Weekday from '../result/Weekday'
 
 const tiktokRoutes = [
     {
@@ -26,16 +25,12 @@ const tiktokRoutes = [
         component: <ViewedVideos />,
     },
     {
-        path: '/tiktok/viewedVideos/screen/',
-        component: <ViewedVideosScreen />,
-    },
-    {
         path: '/tiktok/longestSession/result/',
         component: <LongestSession />,
     },
     {
-        path: '/tiktok/longestSession/screen/',
-        component: <LongestSessionScreen />,
+        path: '/tiktok/weekday/result/',
+        component: <Weekday />,
     },
     {
         path: '/tiktok/ending/',

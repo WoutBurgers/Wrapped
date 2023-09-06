@@ -1,15 +1,10 @@
 import React, { useContext } from 'react'
 import { Context } from '../../DataProvider'
-import { useNavigate } from 'react-router-dom'
-import ResultBottomButtons from '../../components/ResultBottomButtons'
+
+import ResultBottomButtons from '../components/ResultBottomButtons'
 
 export default function ViewedVideos() {
     const { tiktokStats } = useContext(Context)
-    const navigate = useNavigate()
-
-    const handleDownloadClick = () => {
-        navigate('/tiktok/viewedVideos/screen/')
-    }
 
     return (
         <>
@@ -21,11 +16,7 @@ export default function ViewedVideos() {
                 </div>
             </div>
 
-            <ResultBottomButtons
-                handleDownloadClick={handleDownloadClick}
-                showBack={false}
-                nextURL="/tiktok/longestSession/result/"
-            />
+            <ResultBottomButtons showBack={false} nextURL="/tiktok/longestSession/result/" />
         </>
     )
 }

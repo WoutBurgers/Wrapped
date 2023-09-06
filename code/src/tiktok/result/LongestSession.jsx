@@ -1,15 +1,9 @@
 import React, { useContext } from 'react'
 import { Context } from '../../DataProvider'
-import { useNavigate } from 'react-router-dom'
-import ResultBottomButtons from '../../components/ResultBottomButtons'
+import ResultBottomButtons from '../components/ResultBottomButtons'
 
 export default function ViewedVideos() {
     const { tiktokStats } = useContext(Context)
-    const navigate = useNavigate()
-
-    const handleDownloadClick = () => {
-        navigate('/tiktok/longestSession/screen/')
-    }
 
     const date = tiktokStats.longestWatchSession.startTime.toLocaleDateString()
     const length = Math.round(tiktokStats.longestWatchSession.lengthSec / 60)
@@ -32,11 +26,7 @@ export default function ViewedVideos() {
                 </div>
             </div>
 
-            <ResultBottomButtons
-                handleDownloadClick={handleDownloadClick}
-                backURL="/tiktok/viewedVideos/result/"
-                nextURL="/tiktok/ending/"
-            />
+            <ResultBottomButtons backURL="/tiktok/viewedVideos/result/" nextURL="/tiktok/weekday/result/" />
         </>
     )
 }

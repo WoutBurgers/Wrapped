@@ -1,6 +1,6 @@
 import React from 'react'
 import Home from './pages/Home'
-import tiktokRoutes from './tiktok/TikTokRoutes'
+import tiktokRoutes from './tiktok/prep/TikTokRoutes'
 import twitterRoutes from './twitter/TwitterRoutes'
 import { Route, Navigate, Routes } from 'react-router-dom'
 

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import { Context } from '../DataProvider'
+import { Context } from '../../DataProvider'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
-import HomeButton from '../components/HomeButton'
+import HomeButton from '../../components/HomeButton'
 
 export default function LastPage() {
     const { tiktokStats } = useContext(Context)
