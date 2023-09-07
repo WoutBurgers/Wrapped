@@ -17,7 +17,7 @@ export default function CalculateResults() {
 
         handleCalculations()
 
-        navigate('/tiktok/ready/')
+        navigate('/tiktok/prepareSlides/')
     }, [])
 
     const update = async (name, value) => {

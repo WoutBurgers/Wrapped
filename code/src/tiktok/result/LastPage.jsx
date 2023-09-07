@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Context } from '../../DataProvider'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
 import HomeButton from '../../components/HomeButton'
+import ResultBottomButtons from '../components/ResultBottomButtons'
 
 export default function LastPage() {
     const { tiktokStats } = useContext(Context)
@@ -47,80 +48,89 @@ export default function LastPage() {
     }
 
     return (
-        <div style={pageStyle}>
-            <HomeButton />
-            <TableContainer component={Paper} sx={tableContainer}>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell colSpan={2} sx={tableHeader}>
-                                Watch Sessions
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell sx={{ ...firstCell, ...rowSeparator }}>Total videos watched</TableCell>
-                            <TableCell sx={{ ...secondCell, ...rowSeparator }}>{tiktokStats.viewedVideos}</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell sx={{ ...firstCell, ...rowSeparator }}>Total watch time</TableCell>
-                            <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                {Math.round(tiktokStats.totalWatchTimeSec / 60)} minutes
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell sx={{ ...firstCell, ...rowSeparator }}>Watch sessions</TableCell>
-                            <TableCell sx={{ ...secondCell, ...rowSeparator }}>{tiktokStats.totalSessions}</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell sx={{ ...firstCell, ...rowSeparator }}>Average session length</TableCell>
-                            <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                {Math.round(tiktokStats.averageSessionLengthSec / 60)} minutes
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell sx={{ ...firstCell, ...rowSeparator }}>Longest watch session</TableCell>
-                            <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                {Math.round(tiktokStats.longestWatchSession.lengthSec / 60)} minutes on{' '}
-                                {tiktokStats.longestWatchSession.startTime.toLocaleDateString()}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell sx={{ ...firstCell, ...rowSeparator }}>Earliest video watched in data</TableCell>
-                            <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                {tiktokStats.firstVideo.toLocaleDateString()}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell sx={{ ...firstCell, ...rowSeparator }}>Last video watched in data</TableCell>
-                            <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                {tiktokStats.latestVideoWatched.toLocaleDateString()}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell sx={{ ...firstCell, ...rowSeparator }}>Most active weekday</TableCell>
-                            <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                {tiktokStats.mostActiveWeekday.weekday} with{' '}
-                                {Math.round(tiktokStats.mostActiveWeekday.averageUsageTime / 60)} minutes
-                            </TableCell>
-                        </TableRow>
-                    </TableBody>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell colSpan={2} sx={tableHeader}>
-                                Likes
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell sx={{ ...firstCell, ...rowSeparator }}>Total liked videos</TableCell>
-                            <TableCell sx={{ ...secondCell, ...rowSeparator }}>5</TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </div>
+        <>
+            <div style={pageStyle}>
+                <HomeButton />
+                <TableContainer component={Paper} sx={tableContainer}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell colSpan={2} sx={tableHeader}>
+                                    Watch Sessions
+                                </TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell sx={{ ...firstCell, ...rowSeparator }}>Total videos watched</TableCell>
+                                <TableCell sx={{ ...secondCell, ...rowSeparator }}>
+                                    {tiktokStats.viewedVideos}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell sx={{ ...firstCell, ...rowSeparator }}>Total watch time</TableCell>
+                                <TableCell sx={{ ...secondCell, ...rowSeparator }}>
+                                    {Math.round(tiktokStats.totalWatchTimeSec / 60)} minutes
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell sx={{ ...firstCell, ...rowSeparator }}>Watch sessions</TableCell>
+                                <TableCell sx={{ ...secondCell, ...rowSeparator }}>
+                                    {tiktokStats.totalSessions}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell sx={{ ...firstCell, ...rowSeparator }}>Average session length</TableCell>
+                                <TableCell sx={{ ...secondCell, ...rowSeparator }}>
+                                    {Math.round(tiktokStats.averageSessionLengthSec / 60)} minutes
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell sx={{ ...firstCell, ...rowSeparator }}>Longest watch session</TableCell>
+                                <TableCell sx={{ ...secondCell, ...rowSeparator }}>
+                                    {Math.round(tiktokStats.longestWatchSession.lengthSec / 60)} minutes on{' '}
+                                    {tiktokStats.longestWatchSession.startTime.toLocaleDateString()}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell sx={{ ...firstCell, ...rowSeparator }}>
+                                    Earliest video watched in data
+                                </TableCell>
+                                <TableCell sx={{ ...secondCell, ...rowSeparator }}>
+                                    {tiktokStats.firstVideo.toLocaleDateString()}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell sx={{ ...firstCell, ...rowSeparator }}>Last video watched in data</TableCell>
+                                <TableCell sx={{ ...secondCell, ...rowSeparator }}>
+                                    {tiktokStats.latestVideoWatched.toLocaleDateString()}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell sx={{ ...firstCell, ...rowSeparator }}>Most active weekday</TableCell>
+                                <TableCell sx={{ ...secondCell, ...rowSeparator }}>
+                                    {tiktokStats.mostActiveWeekday.weekday} with{' '}
+                                    {Math.round(tiktokStats.mostActiveWeekday.averageUsageTime / 60)} minutes
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell colSpan={2} sx={tableHeader}>
+                                    Likes
+                                </TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell sx={{ ...firstCell, ...rowSeparator }}>Total liked videos</TableCell>
+                                <TableCell sx={{ ...secondCell, ...rowSeparator }}>5</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </div>
+            <ResultBottomButtons currentURL="/tiktok/ending/" />
+        </>
     )
 }

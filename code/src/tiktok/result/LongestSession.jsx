@@ -3,30 +3,23 @@ import { Context } from '../../DataProvider'
 import ResultBottomButtons from '../components/ResultBottomButtons'
 
 export default function ViewedVideos() {
-    const { tiktokStats } = useContext(Context)
+    const { tiktokSlides } = useContext(Context)
 
-    const date = tiktokStats.longestWatchSession.startTime.toLocaleDateString()
-    const length = Math.round(tiktokStats.longestWatchSession.lengthSec / 60)
-    const hours = Math.floor(length / 60)
-    const minutes = length - 60 * hours
-    const comment = tiktokStats.longestWatchSession.comment
+    const longestSession = tiktokSlides.longestSession
 
     return (
         <>
             <div className="standard-style">
                 <div>
-                    <p>On {date} you set a personal record with a session of </p>
+                    <p>{longestSession.s1}</p>
                     <br />
-                    <h1>
-                        {hours > 0 ? `${hours} hours and ` : ''}
-                        {minutes} {length !== 1 ? 'minutes!' : 'minute!'}{' '}
-                    </h1>
+                    <h1>{longestSession.b1}</h1>
                     <br />
-                    <p>{comment}</p>
+                    <p>{longestSession.s2}</p>
                 </div>
             </div>
 
-            <ResultBottomButtons backURL="/tiktok/viewedVideos/result/" nextURL="/tiktok/weekday/result/" />
+            <ResultBottomButtons currentURL="/tiktok/longestSession/" />
         </>
     )
 }

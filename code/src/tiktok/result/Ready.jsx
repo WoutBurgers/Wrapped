@@ -13,7 +13,7 @@ export default function Ready() {
                 <br></br>
             </p>
 
-            <Link to="/tiktok/viewedVideos/result" style={{ textDecoration: 'none', color: 'white' }}>
+            <Link to="/tiktok/viewedVideos" style={{ textDecoration: 'none', color: 'white' }}>
                 <Button variant="contained">Lets see my TikTok Wrapped!</Button>
             </Link>
         </div>

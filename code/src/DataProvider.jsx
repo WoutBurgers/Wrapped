@@ -25,8 +25,17 @@ export default function DataProvider({ children }) {
         averagePerDay: 0,
     })
 
+    const [tiktokSlides, setTikTokSlides] = useState({
+        slides: ['/tiktok/viewedVideos/', '/tiktok/longestSession/', '/tiktok/weekday/', '/tiktok/ending/'],
+        viewedVideos: {},
+        longestSession: {},
+        weekday: {},
+    })
+
     return (
-        <Context.Provider value={{ tiktokData, setTikTokData, tiktokStats, setTikTokStats }}>
+        <Context.Provider
+            value={{ tiktokData, setTikTokData, tiktokStats, setTikTokStats, tiktokSlides, setTikTokSlides }}
+        >
             {children}
         </Context.Provider>
     )

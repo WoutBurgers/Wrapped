@@ -1,22 +1,23 @@
 import React, { useContext } from 'react'
 import { Context } from '../../DataProvider'
-
 import ResultBottomButtons from '../components/ResultBottomButtons'
 
 export default function ViewedVideos() {
-    const { tiktokStats } = useContext(Context)
+    const { tiktokSlides } = useContext(Context)
+
+    const viewedVideos = tiktokSlides.viewedVideos
 
     return (
         <>
             <div className="standard-style">
                 <div>
-                    <p>Since {tiktokStats.firstVideo.toLocaleDateString()} you have watched</p>
+                    <p>{viewedVideos.s1}</p>
                     <br />
-                    <h1>{tiktokStats.viewedVideos} videos! </h1>
+                    <h1>{viewedVideos.b1}</h1>
                 </div>
             </div>
 
-            <ResultBottomButtons showBack={false} nextURL="/tiktok/longestSession/result/" />
+            <ResultBottomButtons currentURL="/tiktok/viewedVideos/" />
         </>
     )
 }
