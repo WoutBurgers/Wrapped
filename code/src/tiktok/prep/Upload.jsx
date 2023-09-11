@@ -12,7 +12,7 @@ export default function Upload() {
     const [errorMessage, setErrorMessage] = useState('')
 
     const handleUploadFile = async (event) => {
-        const uploadedFile = event.target.files[0]
+        const uploadedFile = event?.target?.files[0]
 
         if (uploadedFile) {
             try {
@@ -32,8 +32,12 @@ export default function Upload() {
                 setErrorMessage('No valid JSON file found in the zip.')
             } catch (error) {
                 if (uploadedFile.type === 'application/json') {
-                    const jsonData = await uploadedFile.text()
-                    handleSuccess(jsonData)
+                    const jsonData = await uploadedFile?.text()
+                    if (jsonData) {
+                        handleSuccess(jsonData)
+                    } else {
+                        setErrorMessage('Invalid JSON file. Try another JSON file.')
+                    }
                 } else {
                     setErrorMessage('Invalid file format. Please upload a zip file or a JSON file.')
                 }

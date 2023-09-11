@@ -10,12 +10,12 @@ export default function PrepareSlides() {
 
     useEffect(() => {
         async function prepSlides() {
-            await slides(tiktokStats, updateSlides)
+            await Promise.all([await slides(tiktokStats, updateSlides)])
+
+            navigate('/tiktok/ready/')
         }
-
+        console.log(tiktokStats)
         prepSlides()
-
-        navigate('/tiktok/ready/')
     }, [])
 
     const updateSlides = async (name, value) => {

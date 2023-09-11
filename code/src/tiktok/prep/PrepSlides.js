@@ -1,16 +1,19 @@
 const slides = async (tiktokStats, update) => {
+    const slides = ['/tiktok/viewedVideos/', '/tiktok/longestSession/', '/tiktok/weekday/', '/tiktok/ending/']
+    await update('slides', slides)
+
     const viewedVideos = {
-        s1: 'Since ' + tiktokStats.firstVideo.toLocaleDateString() + ' you have watched',
-        b1: tiktokStats.viewedVideos + ' videos!',
+        s1: 'Since ' + tiktokStats?.viewedVideos?.firstVideo?.toLocaleDateString() + ' you have watched',
+        b1: tiktokStats?.viewedVideos?.totalViewedVideos + ' videos!',
     }
 
-    update('viewedVideos', viewedVideos)
+    await update('viewedVideos', viewedVideos)
 
-    const date = tiktokStats.longestWatchSession.startTime.toLocaleDateString()
-    const length = Math.round(tiktokStats.longestWatchSession.lengthSec / 60)
+    const date = tiktokStats?.session?.longestWatchSession?.startTime?.toLocaleDateString()
+    const length = Math.round(tiktokStats?.session?.longestWatchSession?.lengthSec / 60)
     const hours = Math.floor(length / 60)
     const minutes = length - 60 * hours
-    const comment = tiktokStats.longestWatchSession.comment
+    const comment = tiktokStats?.session?.longestWatchSession?.comment
 
     const longestSession = {
         s1: 'On ' + date + ' you set a personal record with a session of',
@@ -21,16 +24,16 @@ const slides = async (tiktokStats, update) => {
         s2: comment,
     }
 
-    update('longestSession', longestSession)
+    await update('longestSession', longestSession)
 
     const weekday = {
         s1: 'Your most active day is ',
-        b1: tiktokStats.mostActiveWeekday.weekday,
+        b1: tiktokStats?.session?.mostActiveWeekday?.weekday,
         s2: ' with on average a total time of',
-        b2: Math.round(tiktokStats.mostActiveWeekday.averageUsageTime / 60) + ' minutes!',
+        b2: Math.round(tiktokStats?.session?.mostActiveWeekday?.averageUsageTime / 60) + ' minutes!',
     }
 
-    update('weekday', weekday)
+    await update('weekday', weekday)
 }
 
 export default slides

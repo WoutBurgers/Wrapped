@@ -4,20 +4,44 @@ import { useNavigate } from 'react-router-dom'
 import viewedVideos from '../stats/ViewedVideos'
 import { Context } from '../../DataProvider'
 import sessions from '../stats/Sessions'
+import comments from '../stats/Comments'
+import likes from '../stats/Likes'
+import live from '../stats/Lives'
+import shares from '../stats/Shares'
+import gifts from '../stats/Gifts'
+import blocked from '../stats/Blocked'
+import profile from '../stats/Profile'
 
 export default function CalculateResults() {
     const navigate = useNavigate()
     const { tiktokData, setTikTokStats } = useContext(Context)
 
     useEffect(() => {
+        let calculationsTimeout
+
         async function handleCalculations() {
-            await viewedVideos(tiktokData, update)
-            await sessions(tiktokData, update)
+            await Promise.all([
+                viewedVideos(tiktokData, update),
+                sessions(tiktokData, update),
+                comments(tiktokData, update),
+                likes(tiktokData, update),
+                live(tiktokData, update),
+                shares(tiktokData, update),
+                gifts(tiktokData, update),
+                blocked(tiktokData, update),
+                profile(tiktokData, update),
+            ])
+
+            calculationsTimeout = setTimeout(() => {
+                navigate('/tiktok/prepareSlides/')
+            }, 2000)
         }
 
         handleCalculations()
 
-        navigate('/tiktok/prepareSlides/')
+        return () => {
+            clearTimeout(calculationsTimeout)
+        }
     }, [])
 
     const update = async (name, value) => {

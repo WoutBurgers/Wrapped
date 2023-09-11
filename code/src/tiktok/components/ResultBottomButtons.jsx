@@ -19,7 +19,7 @@ export default function ResultBottomButtons({ currentURL }) {
 
     useEffect(() => {
         const getUrls = () => {
-            const currentIndex = pages.indexOf(currentURL)
+            const currentIndex = pages?.indexOf(currentURL)
 
             if (currentIndex === -1) {
                 setShowBack(false)
@@ -33,7 +33,7 @@ export default function ResultBottomButtons({ currentURL }) {
                 setShowBack(false)
             }
 
-            if (currentIndex < pages.length - 1) {
+            if (currentIndex < pages?.length - 1) {
                 setNextURL(pages[currentIndex + 1])
             } else {
                 setShowNext(false)

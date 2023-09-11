@@ -64,32 +64,35 @@ export default function LastPage() {
                             <TableRow>
                                 <TableCell sx={{ ...firstCell, ...rowSeparator }}>Total videos watched</TableCell>
                                 <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                    {tiktokStats.viewedVideos}
+                                    {tiktokStats?.viewedVideos?.totalViewedVideos ?? 0}
                                 </TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell sx={{ ...firstCell, ...rowSeparator }}>Total watch time</TableCell>
                                 <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                    {Math.round(tiktokStats.totalWatchTimeSec / 60)} minutes
+                                    {Math.round((tiktokStats?.session?.totalWatchTimeSec ?? 0) / 60)} minutes
                                 </TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell sx={{ ...firstCell, ...rowSeparator }}>Watch sessions</TableCell>
                                 <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                    {tiktokStats.totalSessions}
+                                    {tiktokStats?.session?.totalSessions ?? 0}
                                 </TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell sx={{ ...firstCell, ...rowSeparator }}>Average session length</TableCell>
                                 <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                    {Math.round(tiktokStats.averageSessionLengthSec / 60)} minutes
+                                    {Math.round((tiktokStats?.session?.averageSessionLengthSec ?? 0) / 60)} minutes
                                 </TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell sx={{ ...firstCell, ...rowSeparator }}>Longest watch session</TableCell>
                                 <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                    {Math.round(tiktokStats.longestWatchSession.lengthSec / 60)} minutes on{' '}
-                                    {tiktokStats.longestWatchSession.startTime.toLocaleDateString()}
+                                    {Math.round((tiktokStats?.session?.longestWatchSession?.lengthSec ?? 0) / 60)}{' '}
+                                    minutes on{' '}
+                                    {tiktokStats?.session?.longestWatchSession?.startTime
+                                        ? tiktokStats.session.longestWatchSession.startTime?.toLocaleDateString()
+                                        : 'error'}
                                 </TableCell>
                             </TableRow>
                             <TableRow>
@@ -97,20 +100,24 @@ export default function LastPage() {
                                     Earliest video watched in data
                                 </TableCell>
                                 <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                    {tiktokStats.firstVideo.toLocaleDateString()}
+                                    {tiktokStats?.viewedVideos?.firstVideo
+                                        ? tiktokStats.viewedVideos.firstVideo?.toLocaleDateString()
+                                        : 'Something went wrong'}
                                 </TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell sx={{ ...firstCell, ...rowSeparator }}>Last video watched in data</TableCell>
                                 <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                    {tiktokStats.latestVideoWatched.toLocaleDateString()}
+                                    {tiktokStats?.session?.latestVideoWatched
+                                        ? tiktokStats.session.latestVideoWatched?.toLocaleDateString()
+                                        : 'Something went wrong'}
                                 </TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell sx={{ ...firstCell, ...rowSeparator }}>Most active weekday</TableCell>
                                 <TableCell sx={{ ...secondCell, ...rowSeparator }}>
-                                    {tiktokStats.mostActiveWeekday.weekday} with{' '}
-                                    {Math.round(tiktokStats.mostActiveWeekday.averageUsageTime / 60)} minutes
+                                    {tiktokStats?.session?.mostActiveWeekday?.weekday ?? 'Something went wrong'} with{' '}
+                                    {Math.round(tiktokStats?.session?.mostActiveWeekday?.averageUsageTime / 60)} minutes
                                 </TableCell>
                             </TableRow>
                         </TableBody>

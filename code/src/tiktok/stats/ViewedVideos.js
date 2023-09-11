@@ -1,10 +1,24 @@
 const viewedVideos = async (data, update) => {
-    const videoList = data?.Activity['Video Browsing History']?.VideoList
-    const length = videoList?.length ?? 0
-    const date = new Date(videoList[length - 1]?.Date)
+    const videoList = data?.Activity?.['Video Browsing History']?.VideoList
 
-    await update('viewedVideos', length)
-    await update('firstVideo', date)
+    if (!videoList) {
+        const viewedVideos = {
+            viewedVideos: 0,
+            firstVideo: null,
+        }
+        await update('viewedVideos', viewedVideos)
+        return
+    }
+
+    const totalViewedVideos = videoList?.length ?? 0
+    const firstVideo = new Date(videoList[0]?.Date)
+
+    const viewedVideos = {
+        totalViewedVideos,
+        firstVideo,
+    }
+
+    await update('viewedVideos', viewedVideos)
 }
 
 export default viewedVideos
