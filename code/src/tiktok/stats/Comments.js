@@ -22,7 +22,7 @@ const comments = async (data, update) => {
         return new Date(a.Date).getTime() - new Date(b.Date).getTime()
     })
 
-    const firstComment = new Date(sortedList[0].Date)
+    const firstComment = { date: new Date(sortedList[0].Date), comment: sortedList[0].Comment }
 
     const commentCountsByDay = {}
 
@@ -86,7 +86,7 @@ const comments = async (data, update) => {
         commentLength,
         mostUsedEmoji: { count: maxEmojiCount, emoji: maxEmoji },
         firstComment,
-        dayWithMostComments: { day: maxDay, count: maxCommentCount },
+        dayWithMostComments: { day: new Date(maxDay), count: maxCommentCount },
     }
 
     await update('comments', comments)

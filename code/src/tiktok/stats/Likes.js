@@ -6,7 +6,10 @@ const likes = async (data, update) => {
         const likes = {
             totalLikes: 0,
             dayWithMostLiked: null,
-            firstLikedVideo: null,
+            firstLikedVideo: {
+                video: '',
+                date: null,
+            },
         }
 
         await update('likes', likes)
@@ -40,7 +43,12 @@ const likes = async (data, update) => {
         }
     }
 
-    const firstLikedVideo = new Date(likedPosts[likedPosts?.length - 1].Date)
+    dayWithMostLiked.day = new Date(dayWithMostLiked.day)
+
+    const firstLikedVideo = {
+        video: likedPosts[likedPosts?.length - 1]?.Link,
+        date: new Date(likedPosts[likedPosts?.length - 1]?.Date),
+    }
 
     const likes = {
         totalLikes,

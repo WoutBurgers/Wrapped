@@ -9,7 +9,7 @@ export default function HomeButton() {
         <div className="home-button-container">
             <Link to="/">
                 <Button variant="outlined" startIcon={<HomeIcon />} className="home-button">
-                    <Typography style={{ textDecoration: 'none', color: 'white' }}>Home</Typography>
+                    <Typography style={{ textDecoration: 'none', color: 'black' }}>Home</Typography>
                 </Button>
             </Link>
         </div>

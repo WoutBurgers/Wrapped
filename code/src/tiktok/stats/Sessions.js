@@ -16,7 +16,10 @@ const sessions = async (data, update) => {
             totalWatchTimeSec: 0,
             totalSessions: 0,
             averageSessionLengthSec: 0,
-            latestVideoWatched: null,
+            latestVideoWatched: {
+                video: '',
+                date: null,
+            },
             longestWatchSession: 0,
             mostActiveWeekday: {
                 weekday: '',
@@ -87,12 +90,12 @@ const sessions = async (data, update) => {
 
     const mostActiveWeekdayIndex = weekdayUsage?.indexOf(Math.max(...weekdayUsage))
     const firstVideo = new Date(videoList[0]?.Date)
-    const latestVideoWatched = new Date(videoList[videoList?.length - 1]?.Date)
+    const latestVideo = new Date(videoList[videoList?.length - 1]?.Date)
 
     const utcDate1 = new Date(Date.UTC(firstVideo?.getFullYear(), firstVideo?.getMonth(), firstVideo?.getDate()))
-    const utcDate2 = new Date(
-        Date.UTC(latestVideoWatched?.getFullYear(), latestVideoWatched?.getMonth(), latestVideoWatched?.getDate())
-    )
+    const utcDate2 = new Date(Date.UTC(latestVideo?.getFullYear(), latestVideo?.getMonth(), latestVideo?.getDate()))
+
+    const latestVideoWatched = { video: videoList[videoList?.length - 1]?.Link, date: latestVideo }
 
     const differenceMs = Math.abs(utcDate2 - utcDate1)
 

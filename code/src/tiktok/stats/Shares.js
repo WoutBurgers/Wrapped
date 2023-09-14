@@ -5,7 +5,10 @@ const shares = async (data, update) => {
         const shares = {
             totalShares: 0,
             dayWithMostShares: null,
-            firstShare: null,
+            firstShare: {
+                video: '',
+                date: null,
+            },
         }
         await update('shares', shares)
 
@@ -36,11 +39,14 @@ const shares = async (data, update) => {
         }
     }
 
-    const firstShare = new Date(sharedPosts[sharedPosts?.length - 1]?.Date)
+    const firstShare = {
+        video: sharedPosts[sharedPosts?.length - 1]?.Link,
+        date: new Date(sharedPosts[sharedPosts?.length - 1]?.Date),
+    }
 
     const shares = {
         totalShares: sharedPosts?.length,
-        dayWithMostShares: { day: mostSharesDay, count: mostSharesCount },
+        dayWithMostShares: { day: new Date(mostSharesDay), count: mostSharesCount },
         firstShare,
     }
 

@@ -3,7 +3,7 @@ const slides = async (tiktokStats, update) => {
     await update('slides', slides)
 
     const viewedVideos = {
-        s1: 'Since ' + tiktokStats?.viewedVideos?.firstVideo?.toLocaleDateString() + ' you have watched',
+        s1: 'Since ' + tiktokStats?.viewedVideos?.firstVideo?.date?.toLocaleDateString() + ' you have watched',
         b1: tiktokStats?.viewedVideos?.totalViewedVideos + ' videos!',
     }
 
