@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { Context } from '../../DataProvider'
 import ResultBottomButtons from '../components/ResultBottomButtons'
+import PropTypes from 'prop-types'
 
-export default function ViewedVideos() {
+export default function ViewedVideos({ next, back }) {
     const { tiktokSlides } = useContext(Context)
 
     const viewedVideos = tiktokSlides.viewedVideos
@@ -17,7 +18,12 @@ export default function ViewedVideos() {
                 </div>
             </div>
 
-            <ResultBottomButtons currentURL="/tiktok/viewedVideos/" />
+            <ResultBottomButtons back={back} next={next} />
         </>
     )
+}
+
+ViewedVideos.propTypes = {
+    next: PropTypes.func,
+    back: PropTypes.func,
 }

@@ -8,7 +8,7 @@ export default function LastPage() {
 
     const tableContainer = {
         backgroundColor: 'transparent',
-        width: '50%',
+        width: '60%',
         margin: '100px auto',
         outline: 'none',
         boxShadow: 'none',

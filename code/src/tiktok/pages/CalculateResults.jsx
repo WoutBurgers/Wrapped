@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { CircularProgress } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import viewedVideos from '../stats/ViewedVideos'
 import { Context } from '../../DataProvider'
 import sessions from '../stats/Sessions'
@@ -12,8 +12,7 @@ import gifts from '../stats/Gifts'
 import blocked from '../stats/Blocked'
 import profile from '../stats/Profile'
 
-export default function CalculateResults() {
-    const navigate = useNavigate()
+export default function CalculateResults({ next }) {
     const { tiktokData, setTikTokStats } = useContext(Context)
 
     useEffect(() => {
@@ -33,7 +32,7 @@ export default function CalculateResults() {
             ])
 
             calculationsTimeout = setTimeout(() => {
-                navigate('/tiktok/prepareSlides/')
+                next()
             }, 2000)
         }
 
@@ -56,4 +55,8 @@ export default function CalculateResults() {
             <CircularProgress style={{ margin: '20px' }} />
         </div>
     )
+}
+
+CalculateResults.propTypes = {
+    next: PropTypes.func,
 }

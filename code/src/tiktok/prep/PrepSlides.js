@@ -1,7 +1,4 @@
 const slides = async (tiktokStats, update) => {
-    const slides = ['/tiktok/viewedVideos/', '/tiktok/longestSession/', '/tiktok/weekday/', '/tiktok/ending/']
-    await update('slides', slides)
-
     const viewedVideos = {
         s1: 'Since ' + tiktokStats?.viewedVideos?.firstVideo?.date?.toLocaleDateString() + ' you have watched',
         b1: tiktokStats?.viewedVideos?.totalViewedVideos + ' videos!',

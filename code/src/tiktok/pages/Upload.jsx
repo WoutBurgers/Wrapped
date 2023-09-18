@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { Button } from '@mui/material'
 import ErrorIcon from '@mui/icons-material/Error'
-import { useNavigate } from 'react-router-dom'
 import HomeButton from '../../components/HomeButton'
 import { Context } from '../../DataProvider'
 import JSZip from 'jszip'
+import PropTypes from 'prop-types'
 
-export default function Upload() {
-    const navigate = useNavigate()
+export default function Upload({ next }) {
     const { setTikTokData } = useContext(Context)
     const [errorMessage, setErrorMessage] = useState('')
 
@@ -48,7 +47,7 @@ export default function Upload() {
     const handleSuccess = (data) => {
         const json = JSON.parse(data)
         setTikTokData(json)
-        navigate('/tiktok/calculateResults/')
+        next()
     }
 
     const handleDownloadData = () => {
@@ -81,4 +80,8 @@ export default function Upload() {
             )}
         </div>
     )
+}
+
+Upload.propTypes = {
+    next: PropTypes.func,
 }

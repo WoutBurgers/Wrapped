@@ -12,7 +12,7 @@ function Home() {
             <p>Find out your social media habits! 🫵</p>
             <div>
                 <div className="menu-buttons">
-                    <Link to="/tiktok/upload/" style={{ textDecoration: 'none', color: 'white' }}>
+                    <Link to="/tiktok/" style={{ textDecoration: 'none', color: 'white' }}>
                         <Button variant="contained">TikTok</Button>
                     </Link>
                 </div>

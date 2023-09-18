@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { Context } from '../../DataProvider'
 import ResultBottomButtons from '../components/ResultBottomButtons'
+import PropTypes from 'prop-types'
 
-export default function Weekday() {
+export default function Weekday({ next, back }) {
     const { tiktokSlides } = useContext(Context)
 
     const weekday = tiktokSlides.weekday
@@ -21,7 +22,12 @@ export default function Weekday() {
                 </div>
             </div>
 
-            <ResultBottomButtons currentURL="/tiktok/weekday/" />
+            <ResultBottomButtons next={next} back={back} />
         </>
     )
+}
+
+Weekday.propTypes = {
+    next: PropTypes.func,
+    back: PropTypes.func,
 }

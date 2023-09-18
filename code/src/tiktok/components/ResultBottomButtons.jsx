@@ -1,47 +1,13 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React from 'react'
 import Button from '@mui/material/Button'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import PropTypes from 'prop-types'
-import { useNavigate } from 'react-router-dom'
 import ImageGenerator from '../images/ImageGenerator'
-import { Context } from '../../DataProvider'
 
-export default function ResultBottomButtons({ currentURL }) {
-    const navigate = useNavigate()
-    const { tiktokSlides } = useContext(Context)
-    const pages = tiktokSlides.slides
-
-    const [backURL, setBackURL] = useState('')
-    const [nextURL, setNextURL] = useState('')
-    const [showBack, setShowBack] = useState(true)
-    const [showNext, setShowNext] = useState(true)
-
-    useEffect(() => {
-        const getUrls = () => {
-            const currentIndex = pages?.indexOf(currentURL)
-
-            if (currentIndex === -1) {
-                setShowBack(false)
-                setShowNext(false)
-                return
-            }
-
-            if (currentIndex > 0) {
-                setBackURL(pages[currentIndex - 1])
-            } else {
-                setShowBack(false)
-            }
-
-            if (currentIndex < pages?.length - 1) {
-                setNextURL(pages[currentIndex + 1])
-            } else {
-                setShowNext(false)
-            }
-        }
-
-        getUrls()
-    }, [])
+export default function ResultBottomButtons({ next, back }) {
+    const showBack = back !== null
+    const showNext = next !== null
 
     return (
         <div style={{ position: 'fixed', bottom: '20px', width: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -50,7 +16,9 @@ export default function ResultBottomButtons({ currentURL }) {
                 startIcon={<ArrowBackIcon />}
                 disabled={!showBack}
                 onClick={() => {
-                    navigate(backURL)
+                    if (showBack) {
+                        back()
+                    }
                 }}
                 style={{ marginRight: '8px' }}
             >
@@ -64,7 +32,9 @@ export default function ResultBottomButtons({ currentURL }) {
                 endIcon={<ArrowForwardIcon />}
                 disabled={!showNext}
                 onClick={() => {
-                    navigate(nextURL)
+                    if (showNext) {
+                        next()
+                    }
                 }}
                 style={{ marginLeft: '8px' }}
             >
@@ -75,9 +45,6 @@ export default function ResultBottomButtons({ currentURL }) {
 }
 
 ResultBottomButtons.propTypes = {
-    currentURL: PropTypes.string,
-}
-
-ResultBottomButtons.defaultProps = {
-    currentURL: '',
+    next: PropTypes.func,
+    back: PropTypes.func,
 }

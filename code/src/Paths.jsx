@@ -1,10 +1,10 @@
 import React from 'react'
 import Home from './pages/Home'
-import tiktokRoutes from './tiktok/prep/TikTokRoutes'
 import twitterRoutes from './twitter/TwitterRoutes'
 import { Route, Navigate, Routes } from 'react-router-dom'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import TikTokSlideShow from './tiktok/prep/TikTokSlideShow'
 
 export default function Paths() {
     return (
@@ -14,9 +14,7 @@ export default function Paths() {
                 <Route path="/terms-of-service/" element={<TermsOfService />} />
                 <Route path="/privacy-policy/" element={<PrivacyPolicy />} />
 
-                {tiktokRoutes.map((route, index) => (
-                    <Route key={index} path={route.path} element={route.component} />
-                ))}
+                <Route path="/tiktok/" element={<TikTokSlideShow />} />
 
                 {twitterRoutes.map((route, index) => (
                     <Route key={index} path={route.path} element={route.component} />

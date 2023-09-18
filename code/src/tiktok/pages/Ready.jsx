@@ -1,8 +1,8 @@
 import React from 'react'
 import Button from '@mui/material/Button'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-export default function Ready() {
+export default function Ready({ next }) {
     return (
         <div className="standard-style">
             <h1>Your TikTok Wrapped is ready!</h1>
@@ -13,9 +13,13 @@ export default function Ready() {
                 <br></br>
             </p>
 
-            <Link to="/tiktok/viewedVideos" style={{ textDecoration: 'none', color: 'white' }}>
-                <Button variant="contained">Lets see my TikTok Wrapped!</Button>
-            </Link>
+            <Button variant="contained" onClick={() => next()}>
+                Lets see my TikTok Wrapped!
+            </Button>
         </div>
     )
+}
+
+Ready.propTypes = {
+    next: PropTypes.func,
 }

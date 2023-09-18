@@ -1,20 +1,18 @@
 import React, { useEffect, useContext } from 'react'
 import { CircularProgress } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
 import { Context } from '../../DataProvider'
-import slides from './PrepSlides'
+import slides from '../prep/PrepSlides'
+import PropTypes from 'prop-types'
 
-export default function PrepareSlides() {
-    const navigate = useNavigate()
+export default function PrepareSlides({ next }) {
     const { tiktokStats, setTikTokSlides } = useContext(Context)
 
     useEffect(() => {
         async function prepSlides() {
             await Promise.all([await slides(tiktokStats, updateSlides)])
 
-            navigate('/tiktok/ready/')
+            next()
         }
-        console.log(tiktokStats)
         prepSlides()
     }, [])
 
@@ -30,4 +28,8 @@ export default function PrepareSlides() {
             <CircularProgress style={{ margin: '20px' }} />
         </div>
     )
+}
+
+PrepareSlides.propTypes = {
+    next: PropTypes.func,
 }

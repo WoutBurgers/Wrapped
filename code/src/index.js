@@ -8,11 +8,9 @@ import DataProvider from './DataProvider'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <DataProvider>
-                <Paths />
-            </DataProvider>
-        </BrowserRouter>
-    </React.StrictMode>
+    <BrowserRouter>
+        <DataProvider>
+            <Paths />
+        </DataProvider>
+    </BrowserRouter>
 )
