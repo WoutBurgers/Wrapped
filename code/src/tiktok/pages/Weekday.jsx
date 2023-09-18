@@ -3,7 +3,7 @@ import { Context } from '../../DataProvider'
 import ResultBottomButtons from '../components/ResultBottomButtons'
 import PropTypes from 'prop-types'
 
-export default function Weekday({ next, back }) {
+export default function Weekday({ next, back, showButtons }) {
     const { tiktokSlides } = useContext(Context)
 
     const weekday = tiktokSlides.weekday
@@ -22,7 +22,7 @@ export default function Weekday({ next, back }) {
                 </div>
             </div>
 
-            <ResultBottomButtons next={next} back={back} />
+            {showButtons ? <ResultBottomButtons back={back} next={next} /> : null}
         </>
     )
 }
@@ -30,4 +30,5 @@ export default function Weekday({ next, back }) {
 Weekday.propTypes = {
     next: PropTypes.func,
     back: PropTypes.func,
+    showButtons: PropTypes.bool,
 }

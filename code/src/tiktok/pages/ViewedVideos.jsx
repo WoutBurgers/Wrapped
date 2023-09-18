@@ -3,7 +3,7 @@ import { Context } from '../../DataProvider'
 import ResultBottomButtons from '../components/ResultBottomButtons'
 import PropTypes from 'prop-types'
 
-export default function ViewedVideos({ next, back }) {
+export default function ViewedVideos({ next, back, showButtons }) {
     const { tiktokSlides } = useContext(Context)
 
     const viewedVideos = tiktokSlides.viewedVideos
@@ -18,7 +18,7 @@ export default function ViewedVideos({ next, back }) {
                 </div>
             </div>
 
-            <ResultBottomButtons back={back} next={next} />
+            {showButtons ? <ResultBottomButtons back={back} next={next} /> : null}
         </>
     )
 }
@@ -26,4 +26,5 @@ export default function ViewedVideos({ next, back }) {
 ViewedVideos.propTypes = {
     next: PropTypes.func,
     back: PropTypes.func,
+    showButtons: PropTypes.bool,
 }

@@ -20,15 +20,15 @@ export default function CalculateResults({ next }) {
 
         async function handleCalculations() {
             await Promise.all([
-                viewedVideos(tiktokData, update),
-                sessions(tiktokData, update),
-                comments(tiktokData, update),
-                likes(tiktokData, update),
-                live(tiktokData, update),
-                shares(tiktokData, update),
-                gifts(tiktokData, update),
-                blocked(tiktokData, update),
-                profile(tiktokData, update),
+                await viewedVideos(tiktokData, update),
+                await sessions(tiktokData, update),
+                await comments(tiktokData, update),
+                await likes(tiktokData, update),
+                await live(tiktokData, update),
+                await shares(tiktokData, update),
+                await gifts(tiktokData, update),
+                await blocked(tiktokData, update),
+                await profile(tiktokData, update),
             ])
 
             calculationsTimeout = setTimeout(() => {
