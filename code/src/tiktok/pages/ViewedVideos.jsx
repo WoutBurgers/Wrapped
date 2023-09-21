@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { Context } from '../../DataProvider'
 import ResultBottomButtons from '../components/ResultBottomButtons'
 import PropTypes from 'prop-types'
+import Title from '../../styled-components/Title'
+import Subtitle from '../../styled-components/SubTitle'
 
 export default function ViewedVideos({ next, back, showButtons }) {
     const { tiktokSlides } = useContext(Context)
@@ -12,9 +14,9 @@ export default function ViewedVideos({ next, back, showButtons }) {
         <>
             <div className="standard-style">
                 <div>
-                    <p>{viewedVideos.s1}</p>
+                    <Subtitle>{viewedVideos.s1}</Subtitle>
                     <br />
-                    <h1>{viewedVideos.b1}</h1>
+                    <Title>{viewedVideos.b1}</Title>
                 </div>
             </div>
 

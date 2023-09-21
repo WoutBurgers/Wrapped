@@ -16,7 +16,9 @@ code {
 
 .standard-style {
     text-align: center;
-    min-height: 100vh;
+    min-height: 90vh;
+    padding-left: 10%;
+    padding-right: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,4 +55,68 @@ code {
 
 .buttons {
     padding-top: 20px;
+}
+
+/* CSS for the sliding animations */
+.slide-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Slide-in from the left */
+.slide-in-left {
+    animation: slide-in-left 0.5s ease-in-out both;
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Slide-out to the right */
+.slide-out-right {
+    animation: slide-out-right 0.5s ease-in-out both;
+}
+
+@keyframes slide-out-right {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Slide-in from the right */
+.slide-in-right {
+    animation: slide-in-right 0.5s ease-in-out both;
+}
+
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Slide-out to the left */
+.slide-out-left {
+    animation: slide-out-left 0.5s ease-in-out both;
+}
+
+@keyframes slide-out-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }

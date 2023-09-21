@@ -22,9 +22,29 @@ function Home() {
                         style={{ textDecoration: 'none', color: 'white', pointerEvents: 'none' }}
                     >
                         <Button disabled variant="contained">
-                            Twitter
+                            X (Twitter)
                         </Button>
                     </Link>
+                </div>
+                <div className="menu-buttons">
+                    <Button disabled variant="contained">
+                        WhatsApp
+                    </Button>
+                </div>
+                <div className="menu-buttons">
+                    <Button disabled variant="contained">
+                        Instagram
+                    </Button>
+                </div>
+                <div className="menu-buttons">
+                    <Button disabled variant="contained">
+                        Snapchat
+                    </Button>
+                </div>
+                <div className="menu-buttons">
+                    <Button disabled variant="contained">
+                        Facebook
+                    </Button>
                 </div>
             </div>
             <div style={{ height: '50px' }}></div>

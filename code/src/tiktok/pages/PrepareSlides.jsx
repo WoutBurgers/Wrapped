@@ -1,15 +1,15 @@
 import React, { useEffect, useContext } from 'react'
-import { CircularProgress } from '@mui/material'
 import { Context } from '../../DataProvider'
 import slides from '../prep/PrepSlides'
 import PropTypes from 'prop-types'
+import character from '../stats/Character'
 
 export default function PrepareSlides({ next }) {
     const { tiktokStats, setTikTokSlides } = useContext(Context)
 
     useEffect(() => {
         async function prepSlides() {
-            await Promise.all([await slides(tiktokStats, updateSlides)])
+            await Promise.all([await slides(tiktokStats, updateSlides), await character(tiktokStats, updateSlides)])
 
             next()
         }
@@ -23,11 +23,7 @@ export default function PrepareSlides({ next }) {
         }))
     }
 
-    return (
-        <div className="standard-style">
-            <CircularProgress style={{ margin: '20px' }} />
-        </div>
-    )
+    return <div className="standard-style"></div>
 }
 
 PrepareSlides.propTypes = {

@@ -10,36 +10,40 @@ export default function ResultBottomButtons({ next, back }) {
     const showNext = next !== null
 
     return (
-        <div style={{ position: 'fixed', bottom: '20px', width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Button
-                variant="outlined"
-                startIcon={<ArrowBackIcon />}
-                disabled={!showBack}
-                onClick={() => {
-                    if (showBack) {
-                        back()
-                    }
-                }}
-                style={{ marginRight: '8px' }}
+        <div style={{ position: 'relative', paddingTop: '60px', maxHeight: '60px', overflowY: 'auto', zIndex: 2 }}>
+            <div
+                style={{ position: 'fixed', bottom: '20px', width: '100%', display: 'flex', justifyContent: 'center' }}
             >
-                Back
-            </Button>
+                <Button
+                    variant="outlined"
+                    startIcon={<ArrowBackIcon />}
+                    disabled={!showBack}
+                    onClick={() => {
+                        if (showBack) {
+                            back()
+                        }
+                    }}
+                    style={{ marginRight: '8px' }}
+                >
+                    Back
+                </Button>
 
-            <ImageGenerator />
+                <ImageGenerator />
 
-            <Button
-                variant="outlined"
-                endIcon={<ArrowForwardIcon />}
-                disabled={!showNext}
-                onClick={() => {
-                    if (showNext) {
-                        next()
-                    }
-                }}
-                style={{ marginLeft: '8px' }}
-            >
-                Next
-            </Button>
+                <Button
+                    variant="outlined"
+                    endIcon={<ArrowForwardIcon />}
+                    disabled={!showNext}
+                    onClick={() => {
+                        if (showNext) {
+                            next()
+                        }
+                    }}
+                    style={{ marginLeft: '8px' }}
+                >
+                    Next
+                </Button>
+            </div>
         </div>
     )
 }

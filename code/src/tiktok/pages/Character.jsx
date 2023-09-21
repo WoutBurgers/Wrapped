@@ -4,23 +4,21 @@ import ResultBottomButtons from '../components/ResultBottomButtons'
 import PropTypes from 'prop-types'
 import Title from '../../styled-components/Title'
 import Subtitle from '../../styled-components/SubTitle'
+import Image from '../../styled-components/Image'
 
-export default function Weekday({ next, back, showButtons }) {
+export default function Character({ next, back, showButtons }) {
     const { tiktokSlides } = useContext(Context)
 
-    const weekday = tiktokSlides.weekday
-
+    const character = tiktokSlides.character
     return (
         <>
             <div className="standard-style">
                 <div>
-                    <Subtitle>{weekday.s1}</Subtitle>
+                    <Subtitle>{character.s1}</Subtitle>
                     <br />
-                    <Title>{weekday.b1}</Title>
-                    <br />
-                    <Subtitle>{weekday.s2}</Subtitle>
-                    <br />
-                    <Title>{weekday.b2}</Title>
+                    <Image src={`/character-images/${character.image}`} alt="Character Image" />
+                    <Title>{character.b1}</Title>
+                    <Subtitle>{character.s2}</Subtitle>
                 </div>
             </div>
 
@@ -29,7 +27,7 @@ export default function Weekday({ next, back, showButtons }) {
     )
 }
 
-Weekday.propTypes = {
+Character.propTypes = {
     next: PropTypes.func,
     back: PropTypes.func,
     showButtons: PropTypes.bool,
