@@ -44,10 +44,32 @@ const shares = async (data, update) => {
         date: new Date(sharedPosts[sharedPosts?.length - 1]?.Date),
     }
 
+    const totalShares = sharedPosts?.length
+
+    let comment = ''
+
+    if (totalShares <= 3) {
+        comment = 'You have no friends??? I am so sorry :('
+    } else if (totalShares <= 20) {
+        comment = 'You like to be alone heh, time to find more friends!'
+    } else if (totalShares <= 50) {
+        comment = 'Okay okay you have a few friends, good job buddy!'
+    } else if (totalShares <= 200) {
+        comment = 'Not bad not bad, you are most likely a social person'
+    } else if (totalShares <= 500) {
+        comment = 'You must have a lot of friends, I like you'
+    } else if (totalShares <= 1000) {
+        comment = 'Sharing is not a job, find a life'
+    } else {
+        comment = 'I bet your friends never watch your videos and think you are annoying'
+    } 
+
+
     const shares = {
-        totalShares: sharedPosts?.length,
+        totalShares,
         dayWithMostShares: { day: new Date(mostSharesDay), count: mostSharesCount },
         firstShare,
+        comment
     }
 
     await update('shares', shares)

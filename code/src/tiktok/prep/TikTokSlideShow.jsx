@@ -8,6 +8,11 @@ import Weekday from '../pages/Weekday'
 import LongestSession from '../pages/LongestSession'
 import LastPage from '../pages/LastPage'
 import Character from '../pages/Character'
+import Emoji from '../pages/Emoji'
+import Shares from '../pages/Shares'
+import Lives from '../pages/Lives'
+import Money from '../pages/Money'
+import Blocked from '../pages/Blocked'
 
 export default function TikTokSlideShow() {
     const [currentSlide, setCurrentSlide] = useState(0)
@@ -17,29 +22,29 @@ export default function TikTokSlideShow() {
 
     const nextSlide = () => {
         setIsAnimationActive(true)
-        setSlideDirection('slide-out-right') // Slide out to the right
+        setSlideDirection('slide-out-left') 
         setTimeout(() => {
             setCurrentSlide((prevSlide) => prevSlide + 1)
-            setSlideDirection('slide-in-left') // Slide in from the left
+            setSlideDirection('slide-in-right') 
             setIsAnimationActive(false)
-        }, 500) // Adjust the delay to match your CSS animation duration
+        }, 500) 
     }
 
     const previousSlide = () => {
         setIsAnimationActive(true)
-        setSlideDirection('slide-out-left') // Slide out to the left
+        setSlideDirection('slide-out-right') 
         setTimeout(() => {
             setCurrentSlide((prevSlide) => prevSlide - 1)
-            setSlideDirection('slide-in-right') // Slide in from the right
+            setSlideDirection('slide-in-left') 
             setIsAnimationActive(false)
-        }, 500) // Adjust the delay to match your CSS animation duration
+        }, 500) 
     }
 
     useEffect(() => {
         if (isAnimationActive) {
-            document.body.style.overflowX = 'hidden'
+            document.body.style.overflow = 'hidden'
         } else {
-            document.body.style.overflowX = 'auto'
+            document.body.style.overflow = 'auto'
         }
     }, [isAnimationActive])
 
@@ -62,9 +67,14 @@ export default function TikTokSlideShow() {
         <PrepareSlides key="prepare" next={nextSlide} />,
         <Ready key="ready" next={nextSlide} change={change} checked={useAutomatedSlides} />,
         <Character key="viewed" next={nextSlide} back={null} showButtons={!useAutomatedSlides} />,
-        <ViewedVideos key="viewed" next={nextSlide} back={null} showButtons={!useAutomatedSlides} />,
+        <ViewedVideos key="viewed" next={nextSlide} back={previousSlide} showButtons={!useAutomatedSlides} />,
         <Weekday key="weekday" next={nextSlide} back={previousSlide} showButtons={!useAutomatedSlides} />,
         <LongestSession key="session" next={nextSlide} back={previousSlide} showButtons={!useAutomatedSlides} />,
+        <Emoji key="emoji" next={nextSlide} back={previousSlide} showButtons={!useAutomatedSlides} />,
+        <Shares key="emoji" next={nextSlide} back={previousSlide} showButtons={!useAutomatedSlides} />,
+        <Lives key="emoji" next={nextSlide} back={previousSlide} showButtons={!useAutomatedSlides} />,
+        <Money key="emoji" next={nextSlide} back={previousSlide} showButtons={!useAutomatedSlides} />,
+        <Blocked key="emoji" next={nextSlide} back={previousSlide} showButtons={!useAutomatedSlides} />,
         <LastPage key="last" />,
     ]
 

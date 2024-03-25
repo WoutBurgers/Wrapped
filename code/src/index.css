@@ -8,6 +8,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    overflow: hidden;
 }
 
 code {
@@ -65,7 +66,6 @@ code {
     overflow: hidden;
 }
 
-/* Slide-in from the left */
 .slide-in-left {
     animation: slide-in-left 0.5s ease-in-out both;
 }
@@ -79,7 +79,6 @@ code {
     }
 }
 
-/* Slide-out to the right */
 .slide-out-right {
     animation: slide-out-right 0.5s ease-in-out both;
 }
@@ -93,7 +92,6 @@ code {
     }
 }
 
-/* Slide-in from the right */
 .slide-in-right {
     animation: slide-in-right 0.5s ease-in-out both;
 }
@@ -107,7 +105,6 @@ code {
     }
 }
 
-/* Slide-out to the left */
 .slide-out-left {
     animation: slide-out-left 0.5s ease-in-out both;
 }
@@ -119,4 +116,8 @@ code {
     100% {
         transform: translateX(-100%);
     }
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

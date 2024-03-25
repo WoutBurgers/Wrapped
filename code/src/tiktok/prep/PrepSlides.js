@@ -31,6 +31,49 @@ const slides = async (tiktokStats, update) => {
     }
 
     await update('weekday', weekday)
+
+    const emoji = {
+        s1: 'In total you posted',
+        b1: tiktokStats?.comments?.totalComments + ' comments',
+        s2: 'and you used the ' + tiktokStats?.comments?.mostUsedEmoji?.emoji + ' emoji ' + tiktokStats?.comments?.mostUsedEmoji?.count + ' times!'
+    }
+
+    await update('emoji', emoji)
+
+    const shares = {
+        s1: 'You shared a total of',
+        b1: tiktokStats?.shares?.totalShares + ' videos!',
+        s2: tiktokStats?.shares?.comment,
+    }
+
+    await update ('shares', shares)
+
+    const lives = {
+        s1: 'You viewed a total of ',
+        b1: tiktokStats?.live?.totalLiveViewed + ' lives',
+        s2: 'and in these lives you left a total of ',
+        b2: tiktokStats?.live?.totalLiveComments + ' comments!'
+    }
+
+    await update ('lives', lives)
+
+    const money = {
+        s1: 'I am sorry to tell you but you gifted',
+        s2: 'a total of ' + tiktokStats?.gifts?.totalGiftAmount + ' coins costing you a shocking',
+        b1: Math.round(tiktokStats?.money?.totalMoneySpent) + ' US Dollars',
+        s3: 'Supporting your favorite creator "' + tiktokStats?.gifts?.mostGiftsUser + '" with ' + tiktokStats?.gifts?.mostGiftsCount + ' coins!'
+    }
+
+    await update ('money', money)
+
+    const blocked = {
+        s1: 'Up until now you have blocked',
+        b1: tiktokStats?.blocked?.totalBlocked + ' users!',
+        s2: tiktokStats?.blocked?.comment,
+    }
+
+    await update ('blocked', blocked)
+
 }
 
 export default slides
